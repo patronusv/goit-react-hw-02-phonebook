@@ -1,14 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import FilterWrapper from './FilterStyled';
 const Filter = ({ onChange, filter }) => {
-  return <input type="text" name="filter" value={filter} onChange={onChange} />;
+  return (
+    <FilterWrapper>
+      <label className="filter-label">
+        Search by name
+        <input className="filter-input" type="text" name="filter" value={filter} onChange={onChange} />
+      </label>
+    </FilterWrapper>
+  );
 };
 
 export default Filter;
-
-// import React, { Component } from 'react';
-// export default class Filter extends Component {
-//   state = { filter: '' };
-//   render() {
-//     return <input type="text" name="filter" value={this.props.filter} onChange={this.props.onChange} />;
-//   }
-// }
+Filter.propTypes = {
+  onChange: PropTypes.func.isRequired,
+  filter: PropTypes.string,
+};

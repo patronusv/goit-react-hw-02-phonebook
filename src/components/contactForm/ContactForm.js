@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-
+import PropTypes from 'prop-types';
+import FormWrapper from './ContactFormStyled';
 export default class ContactForm extends Component {
   state = {
     name: '',
@@ -19,17 +20,24 @@ export default class ContactForm extends Component {
   render() {
     const { name, number } = this.state;
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Name
-          <input type="text" name="name" value={name} onChange={this.handleInputChange} />
-        </label>
-        <label>
-          Number
-          <input type="text" name="number" value={number} onChange={this.handleInputChange} />
-        </label>
-        <button type="submit">Add contact</button>
-      </form>
+      <FormWrapper>
+        <form onSubmit={this.handleSubmit}>
+          <label className="form-label">
+            Name
+            <input className="form-input" type="text" name="name" value={name} onChange={this.handleInputChange} />
+          </label>
+          <label className="form-label">
+            Number
+            <input className="form-input" type="text" name="number" value={number} onChange={this.handleInputChange} />
+          </label>
+          <button className="form-button" type="submit">
+            Add contact
+          </button>
+        </form>
+      </FormWrapper>
     );
   }
 }
+ContactForm.propTypes = {
+  onAddItem: PropTypes.func.isRequired,
+};

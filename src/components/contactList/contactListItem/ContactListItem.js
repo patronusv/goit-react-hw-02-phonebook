@@ -1,14 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import ContactLi from './ContactListItemStyled';
 const ContactListItem = ({ item, onBtnClick }) => {
   return (
-    <li key={item.id}>
-      <span>{item.name}: </span>
-      <span>{item.number}</span>
-      <button type="button" onClick={onBtnClick} data-id={item.id}>
+    <ContactLi classname="contact-list-item" key={item.id}>
+      <span className="contact-list-name">{item.name}: </span>
+      <span className="contact-list-number">{item.number}</span>
+      <button className="contact-list-button" type="button" onClick={onBtnClick} data-id={item.id}>
         Delete contact
       </button>
-    </li>
+    </ContactLi>
   );
 };
 
 export default ContactListItem;
+ContactListItem.propTypes = {
+  item: PropTypes.object.isRequired,
+  onBtnClick: PropTypes.func.isRequired,
+};
