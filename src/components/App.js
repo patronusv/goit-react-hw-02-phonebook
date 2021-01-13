@@ -17,7 +17,7 @@ export default class App extends Component {
   addPhonebookItem = item => {
     const { contacts } = this.state;
     if (contacts.some(element => element.name === item.name)) {
-      alert('Contact with this name already exists');
+      alert(`${item.name} is already in contacts`);
       return;
     }
     if (!item.name.length) {
