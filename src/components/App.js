@@ -24,6 +24,10 @@ export default class App extends Component {
     const { name, value } = e.target;
     this.setState({ [name]: value });
   };
+  handleDeleteContact = e => {
+    const id = e.target.dataset.id;
+    this.setState({ contacts: this.state.contacts.filter(item => item.id !== id) });
+  };
   render() {
     const { contacts, filter } = this.state;
     return (
@@ -32,7 +36,7 @@ export default class App extends Component {
         <ContactForm onAddItem={this.addPhonebookItem} />
         <h2>Contacts</h2>
         <Filter onChange={this.handleInputChange} filter={filter} />
-        <ContactList contacts={contacts} filter={filter} />
+        <ContactList contacts={contacts} filter={filter} onBtnClick={this.handleDeleteContact} />
       </div>
     );
   }
