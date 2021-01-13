@@ -9,6 +9,11 @@ export default class App extends Component {
     filter: '',
   };
   addPhonebookItem = item => {
+    const { contacts } = this.state;
+    if (contacts.some(element => element.name === item.name)) {
+      alert('Contact with this name already exists');
+      return;
+    }
     this.setState(prevState => {
       return {
         contacts: [...prevState.contacts, item],
