@@ -20,6 +20,14 @@ export default class App extends Component {
       alert('Contact with this name already exists');
       return;
     }
+    if (!item.name.length) {
+      alert('Please enter a name');
+      return;
+    }
+    if (!item.number.length) {
+      alert('Please enter a number');
+      return;
+    }
     this.setState(prevState => {
       return {
         contacts: [...prevState.contacts, item],
